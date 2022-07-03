@@ -3,7 +3,8 @@ package com.collections;
 import com.collections.factories.CarFactory;
 import com.collections.models.Car;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 
 public class App {
     public static void main(String[] args) {
@@ -12,17 +13,17 @@ public class App {
         Car car2 = carFactory.createRandomCar();
         Car car3 = carFactory.createRandomCar();
 
-        Car[] cars = fillArray(car1, car2, car3);
-        System.out.println(Arrays.asList(cars));
+        List<Car> cars = fillArray(car1, car2, car3, car1);
+        System.out.println(cars);
+        System.out.println(cars.size());
     }
 
-    public static Car[] fillArray(Car... params) {
-        Car[] cars = new Car[params.length];
+    public static List<Car> fillArray(Car... params) {
+        List<Car> cars = new ArrayList<>();
 
-        for (int i = 0; i < cars.length; i++) {
-            cars[i] = params[i];
+        for (Car param : params) {
+            cars.add(param);
         }
-
         return cars;
     }
 }
