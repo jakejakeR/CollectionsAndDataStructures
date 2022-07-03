@@ -24,10 +24,10 @@ public class CarFactory {
         return car;
     }
 
-    public List<Car> createRandomCars(int amount) {
-        List<Car> cars = new ArrayList<>();
+    public Car[] createRandomCars(int amount) {
+        Car[] cars = new Car[amount];
         for (int i = 0; i < amount; i++) {
-            cars.add(createRandomCar());
+            cars[i] = createRandomCar();
         }
         return cars;
     }
