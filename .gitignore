@@ -1,10 +1,6 @@
-### IntelliJ IDEA ###
 .idea
 *.iws
 *.iml
 *.ipr
 target
 build
-
-### Mac OS ###
-.DS_Store
