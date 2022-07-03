@@ -1,29 +1,43 @@
 package com.collections;
 
-import com.collections.factories.CarFactory;
-import com.collections.models.Car;
-
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class App {
     public static void main(String[] args) {
-        CarFactory carFactory = new CarFactory();
-        Car car1 = carFactory.createRandomCar();
-        Car car2 = carFactory.createRandomCar();
-        Car car3 = carFactory.createRandomCar();
 
-        List<Car> cars = fillArray(car1, car2, car3, car1);
-        System.out.println(cars);
-        System.out.println(cars.size());
+        List<Integer> randomNumbers = generateTenRandomNumbers(10);
+        System.out.println(randomNumbers);
+
+        Map<Integer, List<Integer>> mapOfListsOfIntegers = generateMap(2, 5, 10);
+
+        for (Integer randomNumber : randomNumbers) {
+            for (Integer key : mapOfListsOfIntegers.keySet()) {
+                if (randomNumber % key == 0) {
+                    List<Integer> temporaryList = mapOfListsOfIntegers.get(key);
+                    temporaryList.add(randomNumber);
+                    mapOfListsOfIntegers.putIfAbsent(key, temporaryList);
+                }
+            }
+        }
+
+        System.out.println(mapOfListsOfIntegers);
     }
 
-    public static List<Car> fillArray(Car... params) {
-        List<Car> cars = new ArrayList<>();
+    public static List<Integer> generateTenRandomNumbers(int range) {
+        List<Integer> randomNumbers = new ArrayList<>();
+        Random random = new Random();
 
-        for (Car param : params) {
-            cars.add(param);
+        for (int i = 0; i < range; i++) {
+            randomNumbers.add(random.nextInt(50) + 1);
         }
-        return cars;
+        return randomNumbers;
+    }
+
+    public static Map<Integer, List<Integer>> generateMap(Integer... keys) {
+        Map<Integer, List<Integer>> map = new HashMap<>();
+        for (Integer key : keys) {
+            map.put(key, new ArrayList<>());
+        }
+        return map;
     }
 }
