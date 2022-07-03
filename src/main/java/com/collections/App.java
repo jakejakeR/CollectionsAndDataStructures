@@ -1,7 +1,10 @@
 package com.collections;
 
+import java.util.Comparator;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class App
 {
@@ -14,9 +17,16 @@ public class App
         setOfStrings.add("Aleksandra");
         setOfStrings.add("Marcin");
         setOfStrings.add("Bartosz");
-        setOfStrings.add("Bartosz");
 
-        System.out.println(setOfStrings.size());
+        List<String> listOfSortedStrings = setOfStrings.stream()
+                .sorted()
+                .collect(Collectors.toList());
+        System.out.println(listOfSortedStrings);
+
+        List<String> sortedStringsByLength = setOfStrings.stream()
+                .sorted(Comparator.comparingInt(String::length))
+                .collect(Collectors.toList());
+        System.out.println(sortedStringsByLength);
 
     }
 }
