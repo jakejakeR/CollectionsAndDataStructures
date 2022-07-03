@@ -18,5 +18,10 @@ public class App {
 
         System.out.println(keys);
         System.out.println(values);
+
+        Set<Map.Entry<Integer, Integer>> entries = integers.entrySet();
+        for (Map.Entry<Integer, Integer> entry : entries) {
+            System.out.println(entry);
+        }
     }
 }
