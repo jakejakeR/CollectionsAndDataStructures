@@ -1,32 +1,22 @@
 package com.collections;
 
-import java.util.Comparator;
-import java.util.HashSet;
-import java.util.List;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
-import java.util.stream.Collectors;
 
-public class App
-{
-    public static void main( String[] args )
-    {
-        Set<String> setOfStrings = new HashSet<>();
-        setOfStrings.add("Alicja");
-        setOfStrings.add("Jakub");
-        setOfStrings.add("Julia");
-        setOfStrings.add("Aleksandra");
-        setOfStrings.add("Marcin");
-        setOfStrings.add("Bartosz");
+public class App {
+    public static void main(String[] args) {
 
-        List<String> listOfSortedStrings = setOfStrings.stream()
-                .sorted()
-                .collect(Collectors.toList());
-        System.out.println(listOfSortedStrings);
+        Map<Integer, Integer> integers = new HashMap<>();
+        integers.put(1, 11);
+        integers.put(2, 12);
+        integers.put(3, 13);
 
-        List<String> sortedStringsByLength = setOfStrings.stream()
-                .sorted(Comparator.comparingInt(String::length))
-                .collect(Collectors.toList());
-        System.out.println(sortedStringsByLength);
+        Set<Integer> keys = integers.keySet();
+        Collection<Integer> values = integers.values();
 
+        System.out.println(keys);
+        System.out.println(values);
     }
 }
