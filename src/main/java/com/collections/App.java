@@ -1,21 +1,28 @@
 package com.collections;
 
+import com.collections.factories.CarFactory;
+import com.collections.models.Car;
+
 import java.util.Arrays;
 
 public class App {
     public static void main(String[] args) {
+        CarFactory carFactory = new CarFactory();
+        Car car1 = carFactory.createRandomCar();
+        Car car2 = carFactory.createRandomCar();
+        Car car3 = carFactory.createRandomCar();
 
-        Integer[] numbers = fillArray(1, 2, 3, 4, 5);
-        System.out.println(Arrays.asList(numbers));
+        Car[] cars = fillArray(car1, car2, car3);
+        System.out.println(Arrays.asList(cars));
     }
 
-    public static Integer[] fillArray(Integer... params) {
-        Integer[] numbers = new Integer[params.length];
+    public static Car[] fillArray(Car... params) {
+        Car[] cars = new Car[params.length];
 
-        for (int i = 0; i < numbers.length; i++) {
-            numbers[i] = params[i] * 2;
+        for (int i = 0; i < cars.length; i++) {
+            cars[i] = params[i];
         }
 
-        return numbers;
+        return cars;
     }
 }
