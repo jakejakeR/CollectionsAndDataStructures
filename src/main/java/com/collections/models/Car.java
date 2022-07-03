@@ -2,7 +2,7 @@ package com.collections.models;
 
 import java.util.Objects;
 
-public class Car implements Comparable {
+public class Car implements Comparable<Car> {
 
     private String name;
     private int maxSpeed;
@@ -28,8 +28,7 @@ public class Car implements Comparable {
     }
 
     @Override
-    public int compareTo(Object o) {
-        Car car = (Car) o;
+    public int compareTo(Car car) {
         return Integer.compare(this.maxSpeed, car.getMaxSpeed());
     }
 
