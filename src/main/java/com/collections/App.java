@@ -1,14 +1,27 @@
 package com.collections;
 
+import com.collections.factories.CarFactory;
+import com.collections.models.Car;
+
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 
 public class App {
     public static void main(String[] args) {
-        List<Integer> numbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10));
+        List<Car> cars = new ArrayList<>(Arrays.asList(new CarFactory().createRandomCars(10)));
+        Iterator<Car> carIterator = cars.iterator();
+        System.out.println("Initial size of list: " + cars.size());
 
-        numbers.removeIf(number -> number % 2 == 0);
-        System.out.println(numbers);
+        while (carIterator.hasNext()) {
+            Car nextCar = carIterator.next();
+            System.out.println(nextCar);
+            if(!carIterator.hasNext()) {
+                carIterator.remove();
+            }
+        }
+
+        System.out.println("Size of list after removing last: " + cars.size());
     }
 }
