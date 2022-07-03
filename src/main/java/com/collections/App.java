@@ -1,33 +1,21 @@
 package com.collections;
 
-import com.collections.factories.CarFactory;
-import com.collections.models.Car;
-
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
 
 public class App {
     public static void main(String[] args) {
-        CarFactory carFactory = new CarFactory();
-        Car[] randomCars = carFactory.createRandomCars(10);
+        List<Integer> numbers = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10));
+        Iterator<Integer> iterator = numbers.iterator();
 
-        Map<Integer, List<Car>> mapOfCars = generateCarMap(randomCars);
-        System.out.println(mapOfCars);
-        System.out.println(mapOfCars.keySet());
-    }
-
-    public static Map<Integer, List<Car>> generateCarMap(Car... cars) {
-        Map<Integer, List<Car>> mapOfCars = new HashMap<>();
-        for (Car car : cars) {
-            mapOfCars.put(car.getEngine().getCapacity(), new ArrayList<>());
-        }
-
-        for (Car car : cars) {
-            for (Integer key : mapOfCars.keySet()) {
-                if(Objects.equals(car.getEngine().getCapacity(), key)) {
-                    mapOfCars.get(key).add(car);
-                }
+        while (iterator.hasNext()) {
+            Integer next = iterator.next();
+            if (next % 2 == 0) {
+                iterator.remove();
             }
         }
-        return mapOfCars;
+        System.out.println(numbers);
     }
 }
