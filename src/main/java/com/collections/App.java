@@ -1,27 +1,21 @@
 package com.collections;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.Arrays;
 
 public class App {
     public static void main(String[] args) {
 
-        Map<Integer, Integer> integers = new HashMap<>();
-        integers.put(1, 11);
-        integers.put(2, 12);
-        integers.put(3, 13);
+        Integer[] numbers = fillArray(1, 2, 3, 4, 5);
+        System.out.println(Arrays.asList(numbers));
+    }
 
-        Set<Integer> keys = integers.keySet();
-        Collection<Integer> values = integers.values();
+    public static Integer[] fillArray(Integer... params) {
+        Integer[] numbers = new Integer[params.length];
 
-        System.out.println(keys);
-        System.out.println(values);
-
-        Set<Map.Entry<Integer, Integer>> entries = integers.entrySet();
-        for (Map.Entry<Integer, Integer> entry : entries) {
-            System.out.println(entry);
+        for (int i = 0; i < numbers.length; i++) {
+            numbers[i] = params[i] * 2;
         }
+
+        return numbers;
     }
 }
